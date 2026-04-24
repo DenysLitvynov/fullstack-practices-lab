@@ -1,0 +1,29 @@
+# --- PYTHON / VENV ---
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+
+# --- QUARKUS (Java/Maven/Gradle) ---
+target/
+build/
+.gradle/
+.quarkus/
+bin/
+*.class
+*.patched
+.factorypath
+
+# --- ANGULAR (v20+) ---
+node_modules/
+dist/
+.angular/
+.cache/
+# Logs de npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Carpeta de salida de compilación
+.tmp/
