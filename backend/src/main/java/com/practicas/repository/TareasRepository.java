@@ -1,16 +1,10 @@
 package com.practicas.repository;
 
-import java.sql.Connection;
 import java.util.List;
-
-import javax.sql.DataSource;
-
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 import com.practicas.model.Tarea;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class TareasRepository implements PanacheRepository<Tarea> {

@@ -22,26 +22,61 @@ public class TareasService {
     @Transactional
     public void crearTarea(Tarea tarea) {
         // Lógica para crear una tarea en la base de datos
+        try {
+            tarea.fechaCreacion = new java.sql.Timestamp(System.currentTimeMillis());
+            tareasRepository.persistir(tarea);
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+        }
     }
 
     public List<Tarea> listarTareas() {
         // Lógica para obtener todas las tareas de la base de datos
-        return null;
+        try {
+            return tareasRepository.listarTodas();
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public Tarea obtenerTareaPorId(String id) {
+    public Tarea obtenerTareaPorId(long id) {
         // Lógica para obtener una tarea por su ID de la base de datos
-        return null;
+        try {
+            return tareasRepository.buscarPorId(id);
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Transactional
-    public void marcarTareaComoCompletada(String id) {
+    public void marcarTareaComoCompletada(long id) {
         // Lógica para marcar una tarea como completada en la base de datos
+        try {
+            Tarea tarea = tareasRepository.buscarPorId(id);
+            if (tarea != null) {
+                tarea.completada = true;
+                tareasRepository.persistir(tarea);
+            }
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+        }
     }
 
     @Transactional
-    public void eliminarTarea(String id) {
+    public void eliminarTarea(long id) {
         // Lógica para eliminar una tarea de la base de datos
+        try {
+            tareasRepository.eliminar(id);
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+        }
     }
 
 }
