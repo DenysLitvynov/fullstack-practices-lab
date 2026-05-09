@@ -1,18 +1,32 @@
 package com.practicas.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+// Clase preparada para trabajar con Hibernate ORM Panache
+
+@Entity
 public class Tarea {
     
     // Atributos de la tarea
-    public String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long id;
     public String titulo;
     public String descripcion;
     public Timestamp fechaCreacion;
     public boolean completada;
 
-    // Constructor
-    public Tarea(String id, String titulo, String descripcion, Timestamp fechaCreacion, boolean completada) {
+    // Constructores
+    public Tarea() {
+        // Constructor vacío para Hibernate
+    }
+
+    public Tarea(long id, String titulo, String descripcion, Timestamp fechaCreacion, boolean completada) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -21,7 +35,7 @@ public class Tarea {
     }
 
     // Getters y setters
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -61,7 +75,7 @@ public class Tarea {
     @Override
     public String toString() {
         return "Tarea{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", fechaCreacion=" + fechaCreacion +

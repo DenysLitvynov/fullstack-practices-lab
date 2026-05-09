@@ -1,9 +1,10 @@
-DROP TABLE IF EXISTS tasks;
+-- Si la tabla ya existe, borra y recrea con SERIAL
+DROP TABLE IF EXISTS Tarea;
 
-CREATE TABLE tasks (
+CREATE TABLE Tarea (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    completed BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    titulo VARCHAR(255),
+    descripcion TEXT,
+    fechaCreacion TIMESTAMP,
+    completada BOOLEAN
 );

@@ -4,20 +4,23 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 
+import com.practicas.repository.TareasRepository;
 import com.practicas.service.TareasService;
 
 @Path("/tareas")
 public class TareasResource {
 
     private TareasService tareasService;
+
+    @Inject
     public TareasResource(TareasService tareasService) {
         this.tareasService = tareasService;
     }
 
     // Rutas API REST
-
     @GET
     public String listarTareas() {
         // Lógica para listar todas las tareas
